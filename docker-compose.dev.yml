@@ -1,0 +1,16 @@
+# Base PostgreSQL pour le développement local (lancement depuis l'IDE ou `mvn spring-boot:run`).
+# Valeurs identiques aux défauts de application.yml : aucune variable d'environnement à définir.
+#   docker compose -f docker-compose.dev.yml up -d
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: restaurant
+      POSTGRES_USER: restaurant
+      POSTGRES_PASSWORD: restaurant
+    ports:
+      - "127.0.0.1:5432:5432"
+    volumes:
+      - db-dev-data:/var/lib/postgresql/data
+volumes:
+  db-dev-data:
